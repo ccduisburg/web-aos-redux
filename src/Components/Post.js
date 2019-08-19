@@ -20,6 +20,7 @@ import {connect} from 'react-redux';
     handleClick=()=>{
         console.log(this.props);
         this.props.PostSil(this.props.data.id)
+        
     }
     render() {
        // const posts=this.state.data
