@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 //import axios from 'axios';
 import {connect} from 'react-redux';
+import {deletePost} from '../actions/deleteAction';
 
  class Post extends Component {
     // state={
@@ -18,9 +19,10 @@ import {connect} from 'react-redux';
     // }
 
     handleClick=()=>{
-        console.log(this.props);
+      
         this.props.PostSil(this.props.data.id)
-        
+        this.props.history.push('/');
+
     }
     render() {
        // const posts=this.state.data
@@ -53,8 +55,10 @@ const mapStateToProps=(state,kendiProps)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     //action a gönderecegim type i dispatch ile belirliyoruz
+    //dispatch ile iki parametreyi (id ve type) 
+   
     return{
-        PostSil:(id)=>{dispatch({type:'DELETE',id:id})}
+        PostSil:(id)=>{dispatch(deletePost(id))}
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Post);
